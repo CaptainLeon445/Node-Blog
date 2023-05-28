@@ -1,0 +1,14 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Building my first API endpoints with Node using Blog as a case study.",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx nodemon app.js"
+  },
+  "author": "DAT TECH GUY",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
