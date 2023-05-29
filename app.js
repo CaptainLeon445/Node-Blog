@@ -1,5 +1,5 @@
 const express = require('express');
-const Router=require("./Routers/postsRoutes")
+const postRouter=require("./Routers/postsRoutes")
 const port = 8000;
 const app=express();
 
