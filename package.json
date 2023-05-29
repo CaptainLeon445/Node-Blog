@@ -4,11 +4,15 @@
   "description": "Building my first API endpoints with Node using Blog as a case study.",
   "main": "app.js",
   "scripts": {
-    "start": "npx nodemon app.js"
+    "start": "npx nodemon server.js"
   },
   "author": "DAT TECH GUY",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.1",
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.6"
   }
 }

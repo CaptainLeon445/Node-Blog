@@ -1,34 +1,74 @@
+const blog = require("./../Models/PostModel");
 
-exports.getPosts=(req, res)=>{
+exports.getPosts = async (req, res) => {
+  try {
+    const Posts = await blog.find();
     res.status(200).json({
-        "Message":"testing"
-    })
-}
+      status: "Success",
+      results: Posts.length,
+      data: Posts,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
 
-exports.getPost=(req, res)=>{
+exports.getPost = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const Post = await blog.findById(id);
     res.status(200).json({
-        "Message":"testing"
-    })
-}
+      status: "Success",
+      results: Post.length,
+      data: Post,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
 
-exports.createPost=(req, res)=>{
-    console.log(req.body)
+exports.createPost = async (req, res) => {
+  try {
+    const Post = await blog.create(req.body);
     res.status(201).json({
-        "Message":"created"
+      status: "Success",
+      data: Post,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
 
-    })
-}
-
-exports.updatePosts=(req, res)=>{
+exports.updatePosts = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const Post = await blog.findByIdAndUpdate(id);
     res.status(201).json({
-        "Message":"testing"
-    })
-}
+      status: "Success",
+      data: Post,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
 
-exports.delPost=(req, res)=>{
-    res.status(204).json({
-        "Message":"testing"
-    })
-}
-
-
+exports.delPost = (req, res) => {
+  const id = req.params.id;
+  const Post = blog.findByIdAndDelete(id);
+  res.status(204).json({
+    status: "Success",
+    data: null,
+  });
+};

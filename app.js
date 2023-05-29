@@ -1,13 +1,9 @@
 const express = require('express');
-const postRouter=require("./Routers/postsRoutes")
-const port = 8000;
 const app=express();
-
+const postRouter=require('./Routers/postsRoutes')
 
 app.use(express.json());
 
-app.use(Router)
+app.use('/v1/api/posts', postRouter)
 
-app.listen(port, ()=>{
-    console.log(`Server running on port ${port}`)
-})
+module.exports=app;
